@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.bg-body {
+  background-image: url(assets/images/bg_3.jpg);
+  background-size: cover;
+  background-position: 25% 50%;
+}
+
+header {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+}
+.Mont-light {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+}
+
+.Mont-normal {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+}
+.Mont-medium {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+}
+.Mont-semibold {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+}
+.Mont-bold {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+}
