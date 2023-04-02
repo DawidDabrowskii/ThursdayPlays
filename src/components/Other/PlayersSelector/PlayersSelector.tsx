@@ -1,11 +1,14 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
-import { playersView } from '../../store/playersSlice';
-import JeetImage from '../../assets/images/Jeet.png';
+import { add } from '../../../store/choosenPlayersSlice';
+import { playersView } from '../../../store/playersSlice';
+import { choosenPlayersView } from '../../../store/choosenPlayersSlice';
 import { ChangeEvent } from 'react';
 
-const Players = () => {
+const PlayersSelector = () => {
+  const dispatch = useDispatch();
   const playersList = useSelector(playersView);
+  const choosenPlayersList = useSelector(choosenPlayersView);
   const [currentPage, setCurrentPage] = useState(1);
   const [currentSearchPage, setCurrentSearchPage] = useState(1);
   const playersPerPage = 10;
@@ -17,6 +20,18 @@ const Players = () => {
     position: string;
     skillRate: number;
   }
+  // Remove player from possible choices if he is already added
+  const choosenIDs = choosenPlayersList.map((player: Player) => player.id);
+  const handleAddDisable = (id: number) => {
+    return choosenIDs.some((choosenIDs: number) => choosenIDs === id);
+  };
+  // Add to present logic
+  const handleAdd = (id: number) => {
+    const choosenPlayer = playersList.filter(
+      (player: Player) => player.id === id
+    );
+    dispatch(add(choosenPlayer));
+  };
 
   // Pagination Logic
   const indexOfLastPlayer = currentPage * playersPerPage;
@@ -59,8 +74,8 @@ const Players = () => {
   );
 
   return (
-    <main className='w-full  text-white justify-center items-center flex mt-6'>
-      <div className='relative overflow-x-auto shadow-md sm:rounded-lg '>
+    <div className='  text-white items-center flex justify-center'>
+      <div className='relative overflow-x-auto shadow-md sm:rounded-lg mt-4'>
         <div className='flex items-center justify-center py-2  '>
           <input
             onChange={handleSearch}
@@ -72,7 +87,7 @@ const Players = () => {
         {searchValue.length > 0 ? (
           // If search input is not empty
           <>
-            <div className='flex justify-between px-4 pb-2 border-b '>
+            <div className='flex justify-between px-4 pb-2 border-b'>
               <button
                 onClick={handlePrevSearchPage}
                 disabled={currentSearchPage === 1}
@@ -93,40 +108,31 @@ const Players = () => {
             <table className='w-full text-sm text-left '>
               <thead className='text-xs  uppercase '>
                 <tr>
-                  <th scope='col' className='p-4'></th>
-                  <th scope='col' className='px-6 py-3'>
+                  <th scope='col' className='px-2 py-1'>
                     Name
-                  </th>
-                  <th scope='col' className='px-6 py-3'>
-                    Position
-                  </th>
-                  <th scope='col' className='px-6 py-3'>
-                    Skillrate
                   </th>
                 </tr>
               </thead>
               <tbody>
                 {currentSearchedPlayers.map((player: Player) => (
                   <tr className=' border-b ' key={player.id}>
-                    <td className='w-4 p-4'></td>
                     <th
                       scope='row'
-                      className='flex items-center px-6 py-4  whitespace-nowrap '>
-                      <img
-                        className='w-10 h-10 rounded-full'
-                        src={JeetImage}
-                        alt='Jese image'
-                      />
+                      className='flex justify-between items-center px-2 py-1  whitespace-nowrap '>
                       <div className='pl-3'>
                         <p className=' text-base font-semibold'>
                           {player.name}
                         </p>
                       </div>
+                      <div>
+                        <button
+                          onClick={() => handleAdd(player.id)}
+                          className='bg-green-700 p-1 rounded disabled:bg-gray-700'
+                          disabled={handleAddDisable(player.id)}>
+                          {handleAddDisable(player.id) ? 'Added' : 'Add'}
+                        </button>
+                      </div>
                     </th>
-                    <td className='px-6 py-4 text-center'>{player.position}</td>
-                    <td className='px-6 py-4 text-center'>
-                      {player.skillRate}
-                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -156,40 +162,31 @@ const Players = () => {
             <table className='w-full text-sm text-left '>
               <thead className='text-xs  uppercase '>
                 <tr>
-                  <th scope='col' className='p-4'></th>
-                  <th scope='col' className='px-6 py-3'>
+                  <th scope='col' className='px-2 py-1'>
                     Name
-                  </th>
-                  <th scope='col' className='px-6 py-3'>
-                    Position
-                  </th>
-                  <th scope='col' className='px-6 py-3'>
-                    Skillrate
                   </th>
                 </tr>
               </thead>
               <tbody>
                 {currentPlayers.map((player: Player) => (
                   <tr className=' border-b ' key={player.id}>
-                    <td className='w-4 p-2'></td>
                     <th
                       scope='row'
-                      className='flex items-center px-6 py-3  whitespace-nowrap '>
-                      <img
-                        className='w-10 h-10 rounded-full'
-                        src={JeetImage}
-                        alt='Jese image'
-                      />
+                      className='flex justify-between items-center px-2 py-2  whitespace-nowrap '>
                       <div className='pl-3'>
                         <p className=' text-base font-semibold'>
                           {player.name}
                         </p>
                       </div>
+                      <div>
+                        <button
+                          onClick={() => handleAdd(player.id)}
+                          className='bg-green-700 p-1 rounded disabled:bg-gray-700'
+                          disabled={handleAddDisable(player.id)}>
+                          {handleAddDisable(player.id) ? 'Added' : 'Add'}
+                        </button>
+                      </div>
                     </th>
-                    <td className='px-6 py-4 text-center'>{player.position}</td>
-                    <td className='px-6 py-4 text-center'>
-                      {player.skillRate}
-                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -197,8 +194,8 @@ const Players = () => {
           </>
         )}
       </div>
-    </main>
+    </div>
   );
 };
 
-export default Players;
+export default PlayersSelector;

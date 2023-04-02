@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 const Header = () => {
   return (
-    <header className='flex text-white text-xl justify-around '>
+    <header className='flex text-white text-xl justify-around Mont-normal'>
       <div className='hidden md:block w-24 mt-[-12px] pt-4'>
         <img src={logo} />
       </div>
@@ -11,25 +11,31 @@ const Header = () => {
         <NavLink
           to='/'
           className={({ isActive }) =>
-            isActive ? 'border-b-2 border-white pb-1' : ''
+            isActive ? 'border-b-2 border-white pb-1  duration-300' : ''
           }>
           HOME
         </NavLink>
         <NavLink
-          to='/players'
-          className={({ isActive }) =>
-            isActive ? 'border-b-2 border-white pb-1' : ''
-          }>
-          PLAYERS
-        </NavLink>
-        <NavLink
           to='/generate'
           className={({ isActive }) =>
-            isActive ? 'border-b-2 border-white pb-1' : ''
+            isActive ? 'border-b-2 border-white pb-1  duration-300' : ''
           }>
           GENERATE TEAMS
         </NavLink>
-        <NavLink to='/'>TOP PLAYERS</NavLink>
+        <NavLink
+          to='/teams'
+          className={({ isActive }) =>
+            isActive ? 'border-b-2 border-white pb-1  duration-300' : ''
+          }>
+          TEAMS
+        </NavLink>
+        <NavLink
+          to='/players'
+          className={({ isActive }) =>
+            isActive ? 'border-b-2 border-white pb-1 duration-300' : ''
+          }>
+          PLAYERS
+        </NavLink>
       </ul>
     </header>
   );

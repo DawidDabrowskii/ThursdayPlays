@@ -1,3 +1,5 @@
+import Timer from '../../components/Other/Timer/Timer';
+
 const Home = () => {
   return (
     <main className='w-full  text-white'>
@@ -12,29 +14,9 @@ const Home = () => {
             voluptates veritatis ipsum quisquam sint tempora! Commodi, sunt.
           </p>
         </div>
-        <div className='flex justify-center w-[45%] Mont-bold text-3xl mt-8'>
-          <p>Till next match:</p>
-        </div>
-        <div className='flex text-xl w-[45%] mt-12 justify-center gap-16'>
-          <div className='flex flex-col items-center'>
-            <p className='text-3xl Mont-medium'>1</p>
-            <p className='text-sm'>days</p>
-          </div>
-          <div className='flex flex-col items-center'>
-            <p className='text-3xl Mont-medium'>10</p>
-            <p className='text-sm'>hr</p>
-          </div>
-          <div className='flex flex-col items-center'>
-            <p className='text-3xl Mont-medium'>15</p>
-            <p className='text-sm'>min</p>
-          </div>
-          <div className='flex flex-col items-center'>
-            <p className='text-3xl Mont-medium'>35</p>
-            <p className='text-sm'>sec</p>
-          </div>
-        </div>
+        <Timer />
         <div className='w-[45%] pt-12 flex gap-6 mt-12 justify-center'>
-          <button className='bg-[#ee1e46] rounded py-3 px-6  Mont-medium'>
+          <button className='bg-primary rounded py-3 px-6  Mont-medium'>
             Participate
           </button>
           <button className='Mont-medium '>Learn more</button>
