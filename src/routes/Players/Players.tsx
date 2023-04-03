@@ -1,8 +1,13 @@
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import { playersView } from '../../store/playersSlice';
-import JeetImage from '../../assets/images/Jeet.png';
+import AttackerImage from '../../assets/images/bg_2.jpg';
+import DefenderImage from '../../assets/images/img_1.jpg';
+import GoalKeeperImage from '../../assets/images/img_2.png';
 import { ChangeEvent } from 'react';
+
+import { motion } from 'framer-motion';
+import { staggerContainer, fadeIn } from '../../utils/motion';
 
 const Players = () => {
   const playersList = useSelector(playersView);
@@ -26,6 +31,13 @@ const Players = () => {
     indexOfFirstPlayer,
     indexOfLastPlayer
   );
+
+  // Choose image according to position
+  const chooseImage = (position: string) => {
+    if (position === 'A') return AttackerImage;
+    if (position === 'D') return DefenderImage;
+    if (position === 'G') return GoalKeeperImage;
+  };
 
   // Moving between pages logic
   const handleNextPage = () => {
@@ -59,8 +71,15 @@ const Players = () => {
   );
 
   return (
-    <main className='w-full  text-white justify-center items-center flex mt-6'>
-      <div className='relative overflow-x-auto shadow-md sm:rounded-lg '>
+    <motion.main
+      variants={staggerContainer()}
+      initial='hidden'
+      whileInView='show'
+      viewport={{ once: false, amount: 0.25 }}
+      className='w-full  text-white justify-center items-center flex mt-6'>
+      <motion.div
+        variants={fadeIn('right', 'tween', 0.2, 0.6)}
+        className='relative overflow-x-auto shadow-md sm:rounded-lg '>
         <div className='flex items-center justify-center py-2  '>
           <input
             onChange={handleSearch}
@@ -107,15 +126,15 @@ const Players = () => {
               </thead>
               <tbody>
                 {currentSearchedPlayers.map((player: Player) => (
-                  <tr className=' border-b ' key={player.id}>
-                    <td className='w-4 p-4'></td>
+                  <tr className='border-b' key={player.id}>
+                    <td className='w-4 p-2'></td>
                     <th
                       scope='row'
-                      className='flex items-center px-6 py-4  whitespace-nowrap '>
+                      className='flex items-center px-6 py-3  whitespace-nowrap '>
                       <img
                         className='w-10 h-10 rounded-full'
-                        src={JeetImage}
-                        alt='Jese image'
+                        src={chooseImage(player.position)}
+                        alt='position logo'
                       />
                       <div className='pl-3'>
                         <p className=' text-base font-semibold'>
@@ -156,7 +175,7 @@ const Players = () => {
             <table className='w-full text-sm text-left '>
               <thead className='text-xs  uppercase '>
                 <tr>
-                  <th scope='col' className='p-4'></th>
+                  <th scope='col' className='p-4 '></th>
                   <th scope='col' className='px-6 py-3'>
                     Name
                   </th>
@@ -177,7 +196,7 @@ const Players = () => {
                       className='flex items-center px-6 py-3  whitespace-nowrap '>
                       <img
                         className='w-10 h-10 rounded-full'
-                        src={JeetImage}
+                        src={chooseImage(player.position)}
                         alt='Jese image'
                       />
                       <div className='pl-3'>
@@ -196,8 +215,8 @@ const Players = () => {
             </table>
           </>
         )}
-      </div>
-    </main>
+      </motion.div>
+    </motion.main>
   );
 };
 

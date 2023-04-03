@@ -4,6 +4,8 @@ import { add } from '../../../store/choosenPlayersSlice';
 import { playersView } from '../../../store/playersSlice';
 import { choosenPlayersView } from '../../../store/choosenPlayersSlice';
 import { ChangeEvent } from 'react';
+import { motion } from 'framer-motion';
+import { staggerContainer, fadeIn } from '../../../utils/motion';
 
 const PlayersSelector = () => {
   const dispatch = useDispatch();
@@ -74,13 +76,20 @@ const PlayersSelector = () => {
   );
 
   return (
-    <div className='  text-white items-center flex justify-center'>
-      <div className='relative overflow-x-auto shadow-md sm:rounded-lg mt-4'>
+    <motion.div
+      variants={staggerContainer()}
+      initial='hidden'
+      whileInView='show'
+      viewport={{ once: false, amount: 0.25 }}
+      className='  text-white items-center flex justify-center '>
+      <motion.div
+        variants={fadeIn('right', 'tween', 0.2, 0.6)}
+        className='relative overflow-x-auto shadow-xl sm:rounded-lg mt-4'>
         <div className='flex items-center justify-center py-2  '>
           <input
             onChange={handleSearch}
             type='text'
-            className='block p-2 pl-4 text-sm  border  rounded-lg w-80 bg-gray-50 text-black'
+            className='block p-2 pl-4 text-sm  border  rounded-lg w-80 bg-gray-50 text-black '
             placeholder='Search for players'
           />
         </div>
@@ -193,8 +202,8 @@ const PlayersSelector = () => {
             </table>
           </>
         )}
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 

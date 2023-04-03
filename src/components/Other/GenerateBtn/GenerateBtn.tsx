@@ -4,12 +4,14 @@ import { add, resetPrevTeams } from '../../../store/teamsSlice';
 import { reset } from '../../../store/choosenPlayersSlice';
 import { teamPlayersView } from '../../../store/teamsSlice';
 
+import { useNavigate } from 'react-router-dom';
 import { setTeamsAmount } from '../../../store/teamsAmountSlice';
 
 const GenerateBtn = () => {
   const dispatch = useDispatch();
   const choosenPlayersList = useSelector(choosenPlayersView);
   const teamList = useSelector(teamPlayersView);
+  const navigate = useNavigate();
 
   const handleGenerateTeam = (teamsAmount: number) => {
     // Reset previous teams
@@ -23,9 +25,10 @@ const GenerateBtn = () => {
 
     // Reset choosen players
     dispatch(reset(choosenPlayersList));
-  };
 
-  console.log(teamList);
+    // Navigate to teams tab
+    navigate('/teams');
+  };
 
   return (
     <div className='flex gap-8 mr-8'>

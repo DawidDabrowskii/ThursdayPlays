@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { staggerContainer, fadeIn } from '../../../utils/motion';
 
 const Timer = () => {
   const [countdown, setCountdown] = useState({
@@ -38,24 +40,37 @@ const Timer = () => {
       <div className='flex justify-center w-[45%] Mont-bold text-3xl mt-8'>
         <p>Till next match:</p>
       </div>
-      <div className='flex text-xl w-[45%] mt-12 justify-center gap-16'>
-        <div className='flex flex-col items-center'>
+      <motion.div
+        variants={staggerContainer()}
+        initial='hidden'
+        whileInView='show'
+        viewport={{ once: false, amount: 0.25 }}
+        className='flex text-xl w-[45%] mt-12 justify-center gap-16'>
+        <motion.div
+          variants={fadeIn('up', 'tween', 1, 1)}
+          className='flex flex-col items-center'>
           <p className='text-3xl Mont-medium'>{countdown.days}</p>
           <p className='text-sm'>days</p>
-        </div>
-        <div className='flex flex-col items-center'>
+        </motion.div>
+        <motion.div
+          variants={fadeIn('up', 'tween', 1.1, 1)}
+          className='flex flex-col items-center'>
           <p className='text-3xl Mont-medium'>{countdown.hours}</p>
           <p className='text-sm'>hr</p>
-        </div>
-        <div className='flex flex-col items-center'>
+        </motion.div>
+        <motion.div
+          variants={fadeIn('up', 'tween', 1.2, 1)}
+          className='flex flex-col items-center'>
           <p className='text-3xl Mont-medium'>{countdown.minutes}</p>
           <p className='text-sm'>min</p>
-        </div>
-        <div className='flex flex-col items-center'>
+        </motion.div>
+        <motion.div
+          variants={fadeIn('up', 'tween', 1.3, 1)}
+          className='flex flex-col items-center'>
           <p className='text-3xl Mont-medium'>{countdown.seconds}</p>
           <p className='text-sm'>sec</p>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </>
   );
 };

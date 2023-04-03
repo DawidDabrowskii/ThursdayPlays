@@ -4,6 +4,7 @@ import PageNotFound from './routes/PageNotFound/PageNotFound';
 import Players from './routes/Players/Players';
 import GenerateTeams from './routes/GenerateTeams/GenerateTeams';
 import Teams from './routes/Teams/Teams';
+import Participate from './routes/Participate/Participate';
 
 import { Routes, Route } from 'react-router-dom';
 
@@ -19,6 +20,7 @@ function App() {
           <Route path='/players' element={<Players />} />
           <Route path='/generate' element={<GenerateTeams />} />
           <Route path='/teams' element={<Teams />} />
+          <Route path='/participate' element={<Participate />} />
           <Route path='*' element={<PageNotFound />} />
         </Routes>
       </div>

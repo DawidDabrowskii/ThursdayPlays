@@ -2,6 +2,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { choosenPlayersView } from '../../../store/choosenPlayersSlice';
 import { remove } from '../../../store/choosenPlayersSlice';
 import GenerateBtn from '../GenerateBtn/GenerateBtn';
+import { motion } from 'framer-motion';
+import { staggerContainer, fadeIn } from '../../../utils/motion';
 
 const ChoosenPlayers = () => {
   const dispatch = useDispatch();
@@ -19,8 +21,15 @@ const ChoosenPlayers = () => {
   };
 
   return (
-    <>
-      <div className='shadow-xl rounded-lg flex flex-col relative p-4 mt-48 lg:mt-0'>
+    <motion.div
+      className='min-h-[581px] '
+      variants={staggerContainer()}
+      initial='hidden'
+      whileInView='show'
+      viewport={{ once: false, amount: 0.25 }}>
+      <motion.div
+        variants={fadeIn('left', 'tween', 0.2, 0.6)}
+        className=' flex flex-col relative p-4 mt-48 lg:mt-0 h-full shadow-xl rounded-lg'>
         <h5 className='text-3xl text-center pb-8'>Choosen Players</h5>
         {choosenPlayersList.length > 0 ? (
           <h6 className='text-2xl text-center pb-8'>
@@ -50,11 +59,11 @@ const ChoosenPlayers = () => {
             <h4 className='text-center'>Currently no added players</h4>
           </>
         )}
-        <div className='absolute bottom-[-5rem] flex justify-center items-center w-full p-2'>
+        <div className='absolute bottom-[-5rem] flex justify-center items-center w-full p-2 '>
           <GenerateBtn />
         </div>
-      </div>
-    </>
+      </motion.div>
+    </motion.div>
   );
 };
 

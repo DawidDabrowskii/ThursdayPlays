@@ -13,6 +13,12 @@
 .bg-primary {
   background-color: #ee1e46;
 }
+.border-primary {
+  border-color: #ee1e46;
+}
+.text-primary {
+  color: #ee1e46;
+}
 
 /* || FONTS */
 .Mont-light {
