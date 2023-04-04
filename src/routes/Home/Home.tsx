@@ -33,13 +33,15 @@ const Home = () => {
           </p>
         </motion.div>
         <Timer />
-        <div className='w-[45%] pt-12 flex gap-6 mt-12 justify-center'>
+        <div className='w-[45%] pt-12 flex gap-6 mt-12 justify-center '>
           <Link
             to='/participate'
-            className='bg-primary rounded py-3 px-6  Mont-medium'>
+            className='bg-primary rounded py-3 px-6  Mont-medium hover:scale-105 duration-300'>
             Participate
           </Link>
-          <Link to='/players' className='Mont-medium px-12 py-3'>
+          <Link
+            to='/players'
+            className='Mont-medium px-12 py-3 hover:scale-105 duration-300'>
             Players
           </Link>
         </div>

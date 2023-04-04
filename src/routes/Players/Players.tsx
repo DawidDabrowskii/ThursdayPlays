@@ -158,7 +158,7 @@ const Players = () => {
               <button
                 onClick={handlePrevPage}
                 disabled={currentPage === 1}
-                className='disabled:text-gray-700'>
+                className='disabled:text-gray-700 hover:scale-105 duration-300'>
                 Previous
               </button>
               <p className='text-lg'>{currentPage}</p>
@@ -168,7 +168,7 @@ const Players = () => {
                   currentPage ===
                   Math.floor(playersList.length / playersPerPage) + 1
                 }
-                className='disabled:text-gray-700'>
+                className='disabled:text-gray-700 hover:scale-105 duration-300'>
                 Next
               </button>
             </div>

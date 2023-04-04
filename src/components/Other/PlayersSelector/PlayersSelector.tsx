@@ -100,17 +100,17 @@ const PlayersSelector = () => {
               <button
                 onClick={handlePrevSearchPage}
                 disabled={currentSearchPage === 1}
-                className='disabled:text-gray-700'>
+                className='disabled:text-gray-700 hover:scale-105 duration-300'>
                 Previous
               </button>
-              <p className='text-lg'>{currentSearchPage}</p>
+              <p className='text-lg '>{currentSearchPage}</p>
               <button
                 onClick={handleNextSearchPage}
                 disabled={
                   currentSearchPage ===
                   Math.floor(currentSearchedPlayers.length / playersPerPage) + 1
                 }
-                className='disabled:text-gray-700'>
+                className='disabled:text-gray-700 hover:scale-105 duration-300'>
                 Next
               </button>
             </div>
@@ -136,7 +136,7 @@ const PlayersSelector = () => {
                       <div>
                         <button
                           onClick={() => handleAdd(player.id)}
-                          className='bg-green-700 p-1 rounded disabled:bg-gray-700'
+                          className='bg-green-700 p-1 rounded hover:scale-105 duration-200 disabled:bg-gray-700 disabled:hover:scale-100 disabled:duration-0'
                           disabled={handleAddDisable(player.id)}>
                           {handleAddDisable(player.id) ? 'Added' : 'Add'}
                         </button>
@@ -154,7 +154,7 @@ const PlayersSelector = () => {
               <button
                 onClick={handlePrevPage}
                 disabled={currentPage === 1}
-                className='disabled:text-gray-700'>
+                className='disabled:text-gray-700 hover:scale-105 duration-300'>
                 Previous
               </button>
               <p className='text-lg'>{currentPage}</p>
@@ -164,7 +164,7 @@ const PlayersSelector = () => {
                   currentPage ===
                   Math.floor(playersList.length / playersPerPage) + 1
                 }
-                className='disabled:text-gray-700'>
+                className='disabled:text-gray-700 hover:scale-105 duration-300'>
                 Next
               </button>
             </div>
@@ -190,7 +190,7 @@ const PlayersSelector = () => {
                       <div>
                         <button
                           onClick={() => handleAdd(player.id)}
-                          className='bg-green-700 p-1 rounded disabled:bg-gray-700'
+                          className='bg-green-700 p-1 rounded hover:scale-105 duration-200 disabled:bg-gray-700 disabled:hover:scale-100 disabled:duration-0'
                           disabled={handleAddDisable(player.id)}>
                           {handleAddDisable(player.id) ? 'Added' : 'Add'}
                         </button>

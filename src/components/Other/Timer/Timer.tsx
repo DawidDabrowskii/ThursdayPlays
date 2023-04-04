@@ -38,7 +38,7 @@ const Timer = () => {
   return (
     <>
       <div className='flex justify-center w-[45%] Mont-bold text-3xl mt-8'>
-        <p>Till next match:</p>
+        <p className='whitespace-nowrap'>Till next match:</p>
       </div>
       <motion.div
         variants={staggerContainer()}

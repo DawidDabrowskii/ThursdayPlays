@@ -34,19 +34,19 @@ const GenerateBtn = () => {
     <div className='flex gap-8 mr-8'>
       <button
         onClick={() => handleGenerateTeam(2)}
-        className='bg-primary rounded p-2 disabled:bg-gray-500'
+        className='bg-primary rounded p-2 disabled:bg-gray-500 hover:scale-105 duration-300 whitespace-nowrap'
         disabled={choosenPlayersList.length < 10}>
         Generate 2 teams
       </button>
       <button
         onClick={() => handleGenerateTeam(3)}
-        className='bg-primary rounded p-2 disabled:bg-gray-500'
+        className='bg-primary rounded p-2 disabled:bg-gray-500 hover:scale-105 duration-300 whitespace-nowrap'
         disabled={choosenPlayersList.length < 14}>
         Generate 3 teams
       </button>
       <button
         onClick={() => handleGenerateTeam(4)}
-        className='bg-primary rounded p-2 disabled:bg-gray-500'
+        className='bg-primary rounded p-2 disabled:bg-gray-500 hover:scale-105 duration-300 whitespace-nowrap'
         disabled={choosenPlayersList.length < 17}>
         Generate 4 teams
       </button>
