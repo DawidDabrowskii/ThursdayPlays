@@ -13,14 +13,20 @@ const Timer = () => {
   // Timer to every thursday, 18:00(6 PM);
   useEffect(() => {
     const interval = setInterval(() => {
-      const targetDate: any = new Date();
+      let targetDate: any = new Date();
       targetDate.setDate(
         targetDate.getDate() + ((4 - targetDate.getDay()) % 7)
       );
       targetDate.setHours(18, 0, 0, 0);
 
       const now = new Date().getTime();
-      const distance = targetDate - now;
+      let distance = targetDate - now;
+
+      if (distance <= 0) {
+        // If target time has passed, calculate time until next Thursday
+        targetDate.setDate(targetDate.getDate() + 7);
+        distance = targetDate - now;
+      }
 
       const days = Math.floor(distance / (1000 * 60 * 60 * 24));
       const hours = Math.floor(
