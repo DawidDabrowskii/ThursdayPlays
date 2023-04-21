@@ -1,20 +1,14 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { choosenPlayersView } from '../../../store/choosenPlayersSlice';
-import { remove, reset } from '../../../store/choosenPlayersSlice';
+import { choosenPlayersView } from '../../../store/reducers/choosenPlayersSlice';
+import { remove, reset } from '../../../store/reducers/choosenPlayersSlice';
 import GenerateBtn from '../GenerateBtn/GenerateBtn';
 import { motion } from 'framer-motion';
 import { staggerContainer, fadeIn } from '../../../utils/motion';
+import { Player } from '../../../utils/Types';
 
 const ChoosenPlayers = () => {
   const dispatch = useDispatch();
   const choosenPlayersList = useSelector(choosenPlayersView);
-
-  interface Player {
-    id: number;
-    name: string;
-    position: string;
-    skillRate: number;
-  }
 
   const handleRemove = (id: number) => {
     dispatch(remove({ id }));
@@ -33,7 +27,7 @@ const ChoosenPlayers = () => {
       viewport={{ once: false, amount: 0.25 }}>
       <motion.div
         variants={fadeIn('left', 'tween', 0.2, 0.6)}
-        className=' flex flex-col relative p-4 mt-48 lg:mt-0 h-full shadow-xl rounded-lg'>
+        className=' flex flex-col relative p-4 mt-48 lg:mt-0 h-full shadow-xl rounded-lg min-w-[542px]'>
         <h5 className='text-3xl text-center pb-8'>Choosen Players</h5>
         {choosenPlayersList.length > 0 ? (
           <h6 className='text-2xl text-center '>

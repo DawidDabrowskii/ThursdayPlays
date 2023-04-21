@@ -1,21 +1,15 @@
 import TeamTable from '../../components/Other/TeamTable/TeamTable';
 import { useSelector } from 'react-redux';
-import { teamPlayersView } from '../../store/teamsSlice';
-import { teamsAmountView } from '../../store/teamsAmountSlice';
+import { teamPlayersView } from '../../store/reducers/teamsSlice';
+import { teamsAmountView } from '../../store/reducers/teamsAmountSlice';
 import { CurrentPrice } from '../../constants/Other/Data';
 import { motion } from 'framer-motion';
 import { staggerContainer, fadeIn } from '../../utils/motion';
+import { Player } from '../../utils/Types';
 
 const Teams = () => {
   const teamList = useSelector(teamPlayersView);
   const teamsAmount = useSelector(teamsAmountView);
-
-  interface Player {
-    id: number;
-    name: string;
-    position: string;
-    skillRate: number;
-  }
 
   let team1: Player[] = [];
   let team2: Player[] = [];

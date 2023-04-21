@@ -1,8 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-
-interface teamsAmount {
-  amount: number;
-}
+import { teamsAmount } from '../../utils/Types';
 
 const teamsAmountSlice = createSlice({
   name: 'teamsAmount',

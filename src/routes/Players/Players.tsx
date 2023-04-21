@@ -1,10 +1,11 @@
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
-import { playersView } from '../../store/playersSlice';
+import { playersView } from '../../store/reducers/playersSlice';
 import AttackerImage from '../../assets/images/bg_2.jpg';
 import DefenderImage from '../../assets/images/img_1.jpg';
 import GoalKeeperImage from '../../assets/images/img_2.png';
 import { ChangeEvent } from 'react';
+import { Player } from '../../utils/Types';
 
 import { motion } from 'framer-motion';
 import { staggerContainer, fadeIn } from '../../utils/motion';
@@ -15,13 +16,6 @@ const Players = () => {
   const [currentSearchPage, setCurrentSearchPage] = useState(1);
   const playersPerPage = 10;
   const [searchValue, setSearchValue] = useState('');
-
-  interface Player {
-    id: number;
-    name: string;
-    position: string;
-    skillRate: number;
-  }
 
   // Pagination Logic
   const indexOfLastPlayer = currentPage * playersPerPage;

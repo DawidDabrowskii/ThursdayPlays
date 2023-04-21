@@ -1,11 +1,11 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { choosenPlayersView } from '../../../store/choosenPlayersSlice';
-import { add, resetPrevTeams } from '../../../store/teamsSlice';
-import { reset } from '../../../store/choosenPlayersSlice';
-import { teamPlayersView } from '../../../store/teamsSlice';
+import { choosenPlayersView } from '../../../store/reducers/choosenPlayersSlice';
+import { add, resetPrevTeams } from '../../../store/reducers/teamsSlice';
+import { reset } from '../../../store/reducers/choosenPlayersSlice';
+import { teamPlayersView } from '../../../store/reducers/teamsSlice';
 
 import { useNavigate } from 'react-router-dom';
-import { setTeamsAmount } from '../../../store/teamsAmountSlice';
+import { setTeamsAmount } from '../../../store/reducers/teamsAmountSlice';
 
 const GenerateBtn = () => {
   const dispatch = useDispatch();

@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { playersReducer } from './playersSlice';
-import { choosenPlayersReducer } from './choosenPlayersSlice';
-import { teamsReducer } from './teamsSlice';
-import { teamsAmountReducer } from './teamsAmountSlice';
+import { playersReducer } from './reducers/playersSlice';
+import { choosenPlayersReducer } from './reducers/choosenPlayersSlice';
+import { teamsReducer } from './reducers/teamsSlice';
+import { teamsAmountReducer } from './reducers/teamsAmountSlice';
 
 const store = configureStore({
   reducer: {

@@ -1,14 +1,8 @@
 import { motion } from 'framer-motion';
 import { staggerContainer, fadeIn } from '../../../utils/motion';
+import { Player } from '../../../utils/Types';
 
 const TeamTable = ({ title, team }: { title: string; team: any }) => {
-  interface Player {
-    id: number;
-    name: string;
-    position: string;
-    skillRate: number;
-  }
-
   const calcSkillRate =
     team
       .map((player: Player) => player.skillRate)

@@ -1,11 +1,12 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
-import { add } from '../../../store/choosenPlayersSlice';
-import { playersView } from '../../../store/playersSlice';
-import { choosenPlayersView } from '../../../store/choosenPlayersSlice';
+import { add } from '../../../store/reducers/choosenPlayersSlice';
+import { playersView } from '../../../store/reducers/playersSlice';
+import { choosenPlayersView } from '../../../store/reducers/choosenPlayersSlice';
 import { ChangeEvent } from 'react';
 import { motion } from 'framer-motion';
 import { staggerContainer, fadeIn } from '../../../utils/motion';
+import { Player } from '../../../utils/Types';
 
 const PlayersSelector = () => {
   const dispatch = useDispatch();
@@ -16,12 +17,6 @@ const PlayersSelector = () => {
   const playersPerPage = 10;
   const [searchValue, setSearchValue] = useState('');
 
-  interface Player {
-    id: number;
-    name: string;
-    position: string;
-    skillRate: number;
-  }
   // Remove player from possible choices if he is already added
   const choosenIDs = choosenPlayersList.map((player: Player) => player.id);
   const handleAddDisable = (id: number) => {

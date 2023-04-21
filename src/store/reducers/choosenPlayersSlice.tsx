@@ -1,12 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-
-interface Players {
-  id: number;
-  name: string;
-  position: string;
-  skillRate: number;
-}
-[];
+import { Players } from '../../utils/Types';
 
 const choosenPlayersSlice = createSlice({
   name: 'choosenPlayers',
